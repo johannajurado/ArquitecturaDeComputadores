@@ -17,18 +17,18 @@ CLK-----|>         |
         |__________|
 
 
-2. Escriba los 4 principios de diseÒo de hardware aprendidos en clase.
+2. Escriba los 4 principios de dise√±o de hardware aprendidos en clase.
 R//
 1.La simplicidad favorece la regularidad
-2.Entre m·s pequeÒo es m·s r·pido
-3.Hacer el caso com˙n m·s r·pido
-4.Buenos diseÒos demandan grandes compromisos
+2.Entre m√°s peque√±o es m√°s r√°pido
+3.Hacer el caso com√∫n m√°s r√°pido
+4.Buenos dise√±os demandan grandes compromisos
 
 
 
 3. Convertir a instrucciones de bajo nivel.
 
-INICIALIZACI”N DE VARIABLES
+INICIALIZACI√ìN DE VARIABLES
 int x=0; ---- x=%L0  ADD %g0,0,%L0
 int y=8; ---- y=%L1  ADD %g0, 8,%L1
 int z=1; ---- z=%L2  ADD %g0, 1,%L2
@@ -47,8 +47,7 @@ EJERCICIO 1
 
 a[4]= a[2]+x; 
 
-INICIALIZACI”N DE VARIABLES
-a=%O0  Variable de Salida   
+INICIALIZACI√ìN DE VARIABLES
 a=%L1  Vatiable de Entrada    
 x=%L2
 
@@ -56,27 +55,25 @@ OPERACIONES
 
 LD  [%L1+(2*4)],%L3
 ADD %L2,%L3,%L2
-ST  %L2,[ %O0  + (4*4) ]
+ST  %L2,[ %L1  + (4*4) ]
 
 
 EJERCICIO 2
 
 y[0] = y[40]+13;
 
-INICIALIZACI”N DE VARIABLES
-
-y=%O0  Variable de salida     
-y=%L1  Variable de entrada
+INICIALIZACI√ìN DE VARIABLES
+y=%L1  
 13 Es un Inmediato
 
 OPERACIONES
 
 LD  [%L1+(40*4)],%L2
 ADD  %L2,13,%L3
-ST %L3,[ %O0  + (0*4) ]
+ST %L3,[ %L1  + (0*4) ]
 
 
-5. Convertir a lenguaje de m·quina.
+5. Convertir a lenguaje de m√°quina.
 
 a.int main(){
 
