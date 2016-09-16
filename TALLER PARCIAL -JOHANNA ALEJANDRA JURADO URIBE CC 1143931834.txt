@@ -36,15 +36,21 @@
 6. Implemente en lenguaje de bajo nivel y lenguaje de maquina el siguiente programa.
 7. a.
 int main(){
-int a = 8;
-int b = -16800;
-int c = 33; 
-if((a+b)<=b*32){
-c=a+(b*2);
-}
-else {return b;
-}
-return a+c;
+int a = 8;          MOV 8 , %L0
+int c = 33;         MOV 33, %L2
+int b = -16800;     SETHI -17,%L1   
+                    OR %L1,608,%L1
+if((a+b)<=b*32){    ADD %L0,%L1,%L3
+                    SLL %L1,32,%L4
+                    CMP %L3,%L4,%L4
+                    BG a SALTO1
+c=a+(b*2);          SLL %L1,2,%L6
+                    ADD %L0,%L6,%L2
+                    BA a EXIT
+}                   SALTO1
+else {return b;     MOV %L1,%O0
+}                   EXIT
+return a+c;         ADD %L0,%L2,%O1
 }
 
 b.
@@ -69,7 +75,9 @@ return a;
 
 d. 
 int main(){
-int a = 6; int b=4; int c=2;
+int a = 6; 
+int b=4; 
+int c=2;
 for(int i=0; i<=3; i++){
 c=(a+b)/8;
 	}
