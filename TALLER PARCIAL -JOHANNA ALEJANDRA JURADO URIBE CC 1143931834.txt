@@ -13,6 +13,17 @@
 
 3. Explique los tres formatos de instrucciones principales existentes en la arquitectura SPARCV8.
 
+-FORMATO #1 Lo utilizan las instrucciones de CALL
+           OP    disp30
+
+-FORMATO #2 Lo utilizan las instrucciones SETHI y BRANCH (Bicc,FBfcc,CBcc)
+          OP  RD  OP2   imm22
+          OP  a   COND  OP2    disp22
+ 
+ -FORMATO #3 Lo utilizan las instrucciones memory instructions,arithmetic.logical,shnct and remaining
+          OP  RD  OP3   RS1  i   UNSUED/ZERO  RS2
+          OP  RD  OP3   RS1  i   UNSUED/ZERO  SHNCT       
+ 
 4. Explique cómo inicializar un valor grande, que ocupe más de 13 bits, en la arquitectura SPARCV8.
 5. Como puedo reescribir la instrucción (OR y SUBcc) cuando inicializo y  comparo 2 registros.
 6. Implemente en lenguaje de bajo nivel y lenguaje de maquina el siguiente programa.
