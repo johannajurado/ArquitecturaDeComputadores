@@ -94,6 +94,9 @@ return b;               MOV %L1,%O1
 }                       EXIT
                         NOP
 }
+LENGUAJE DE MÁQUINA
+
+
 
 c.
 int main(){            LENGUAJE DE BAJO NIVEL
