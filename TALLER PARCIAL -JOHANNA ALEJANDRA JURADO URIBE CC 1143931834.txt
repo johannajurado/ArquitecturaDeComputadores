@@ -136,15 +136,23 @@ OX0008	        10	1000	000100	00000	0	00000000	10000
 
 
 d. 
-int main(){
-int a = 6; 
-int b=4; 
-int c=2;
-for(int i=0; i<=3; i++){
-c=(a+b)/8;
-	}
-return c;
-}
+int main(){                LENGUAJE DE BAJO NIVEL
+int a = 6;                 MOV 6,%L0
+int b=4;                   MOV 4,%L1
+int c=2;                   MOV 2,%L2
+for(int i=0; i<=3; i++)    FOR
+                           CMP  %L4,3,%L5 
+{                          BG a SALTO1
+c=(a+b)/8;                 ADD %L0,%L1,%L0
+                           SRL %L0,8,%L2
+	}                  BA a EXIT
+	                   SALTO1
+return c;                  mov  %l2,%O0   
+}                          EXIT
+                           NOP
+
+LENGUAJE DE MÁQUINA
+
 
 8. Convierta el siguiente código a lenguaje de máquina SPARCV8.
 
