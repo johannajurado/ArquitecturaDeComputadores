@@ -34,7 +34,7 @@
 -Se puede reescribir con las instrucciones sintéticas MOV para OR y CMP  para SUBcc.
 
 6. Implemente en lenguaje de bajo nivel y lenguaje de maquina el siguiente programa.
-7. a.
+7. a.               LENGUAJE DE BAJO NIVEL
 int main(){
 int a = 8;          MOV 8 , %L0
 int c = 33;         MOV 33, %L2
@@ -52,6 +52,9 @@ else {return b;     MOV %L1,%O0
 }                   EXIT
 return a+c;         ADD %L0,%L2,%O1
 }
+
+LENGUAJE DE MÁQUINA
+
 
 b.
 int main(){
