@@ -26,10 +26,13 @@
           OP  RD  OP3   RS1  i   UNSUED/ZERO  SHNCT       
  
 4. Explique cómo inicializar un valor grande, que ocupe más de 13 bits, en la arquitectura SPARCV8.
+
 -Se inicializa con la instrucción SETHI,la cual permite almacenar hasta 22 bits
 
-
 5. Como puedo reescribir la instrucción (OR y SUBcc) cuando inicializo y  comparo 2 registros.
+
+-Se puede reescribir con las instrucciones sintéticas MOV para OR y CMP  para SUBcc.
+
 6. Implemente en lenguaje de bajo nivel y lenguaje de maquina el siguiente programa.
 7. a.
 int main(){
@@ -49,6 +52,8 @@ b.
 int main(){
         int a = 8;
         int b = -10;
+        int c = 3;
+        
         if(a!=b){
                 return c/8;
 }
