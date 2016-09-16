@@ -71,10 +71,13 @@ return b;
 }
 
 c.
-int main(){
-int a = -21180;
-return a;
+int main(){              LENGUAJE DE BAJO NIVEL
+int a = -21180;          SETHI -20,%L0
+                         OR %L0,324,%L0
+return a;                MOV %L0,%O0
 }
+
+LENGUAJE DE MÁQUINA
 
 d. 
 int main(){
