@@ -121,7 +121,7 @@ OX0028          00	00000	100	0000000000000000000000
 
 c.
 int main(){            LENGUAJE DE BAJO NIVEL
-int a = -21180;        SETHI -20,%L0
+int a = -21180;        SETHI -21,%L0
                        OR %L0,324,%L0
 return a;              MOV %L0,%O0
 }
