@@ -188,7 +188,54 @@ int main(){
 
 9.Implemente una función mul en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que realice la multiplicación de dos enteros sin signo usando solo sumas.
 
+	int mul(int n1, int n2)
+	{
+	    int r=0;
+	    int i=0;
+	    
+	    while(i<n2)
+	    {
+	    	r = r + n1;    
+	    	i = i + 1;
+	    }
+	    
+	    return r;
+	}
+
 10.Implemente la función pot en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que realice la potencia de dos números enteros sin signo realizando llamados a la función desarrollada en el punto 9.
+
+	int mul(int n1, int n2)
+	{
+	    int r=0;
+	    int i=0;
+	    
+	    while(i<n2)
+	    {
+	    	r = r + n1;    
+	    	i = i + 1;
+	    }
+	    
+	    return r;
+	}
+	
+	int main()
+	{
+		int base=2;
+		int potencia=4;
+		int r=1;
+		int i=0;
+		
+		if (potencia == 0) return r;
+		while(i<potencia)
+		{
+			resultado = mul(r,base);
+			i = i + 1;
+		}
+		
+		return r;
+	}
+	
+
 
 11.Implemente una función pol en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que calcule un polinomio de grado n, en donde los coeficientes del polinomio se encuentran almacenados en un vector k de n+1 posiciones, de la siguientes forma:
 		pol(x,k,n)=i=0nkixi
