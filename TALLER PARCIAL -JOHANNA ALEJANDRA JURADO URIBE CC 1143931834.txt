@@ -8,8 +8,8 @@
 2. Diga cuales son los 4 principios de diseño.
 
 1-La simplicidad favorece la regularidad
-2-entre más pequeño es más rápido
-3-Hacer el caso común más rápidp
+2-Entre más pequeño es más rápido
+3-Hacer el caso común más rápido
 4-Buenos diseños demandan grandes compromisos
 
 3. Explique los tres formatos de instrucciones principales existentes en la arquitectura SPARCV8.
