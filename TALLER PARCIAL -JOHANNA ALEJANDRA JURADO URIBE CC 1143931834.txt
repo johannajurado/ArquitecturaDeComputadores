@@ -194,6 +194,32 @@ int main(){                                  MAIN
         return c + 45;
 }
 
+Para ingresar la inicializacion del registro  %i2 debo realizar complemento a dos y realizar lenguaje ensamblador con las siguientes instrucciones:
+ SETHI 0,%i2
+ OR    %i2,896,%i2
+ 
+ LENGUAJE MAQUINA
+DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0000	        10	11010	000010	11000	0	00000000	11001
+	        OP	RD	OP3	RS1	i	Unusued/zero 	SHCNT
+OX0004	        10	11001	100101	11001	1	00000000	01000
+	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0008	        10	10001	000000	11011	0	00000000	11010
+OX000C	        10	00000	111000	01111	1	0000000001000	
+OX0010	        10	10000	000000	10001	1	0000000000010	
+OX0014	        10	11000	000010	00000	1	0000000000100	
+OX0018	        10	11001	000010	00000	1	0000000000010	
+	        OP	RD	OP2	Imm22			
+OX001C	        00	11010	100	11111111111111111111111			
+	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0020	        10	11010	000010	11010	1	0001110000000	
+	        OP	Disp 30					
+OX0024	        01	00000000000000000000000000001000					
+	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0028	        10	10000	000010	00000	1	0000000000000	
+OX002C	        10	11001	000000	10000	1	0000000101101	
+
+
 9.Implemente una función mul en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que realice la multiplicación de dos enteros sin signo usando solo sumas.
 
 	int mul(int n1, int n2)
