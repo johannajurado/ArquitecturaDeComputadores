@@ -170,19 +170,27 @@ OX0020	        10	01000	000010	00000	0	00000000	10010
 	        OP	RD	OP2	Imm22			
 OX0024	        00	00000	100	0000000000000000000000			
 
-8. Convierta el siguiente código a lenguaje de máquina SPARCV8.
+8. Convierta el siguiente código a lenguaje de máquina
+Asigancion de registros
+   X=%i0
+   y=%i1
+   z=%i2 
+   c=%L0  
+   a=%L1                                     Lenguaje ensamblador
+					     EJEMPLO			     
+int ejemplo(int x, int y, int z){            SUB %i0,%i1,%i3
+        int a;                               SLL %i2,8,%i2
+        a = x - y + z*8;                     ADD %i3,%i2,%l1
+        return a + 2;                        JMPL %O7,8,%g0
+}                                            ADD %L1,2,%O0
 
-
-int ejemplo(int x, int y, int z){
-        int a;
-        a = x - y + z*8;
-        return a + 2;
-}
-
-int main(){
-        int x = 4, y = 2, z = -128;
-        int c= 0; 
-        int c = ejemplo(x,y,z);
+int main(){                                  MAIN
+        int x = 4, y = 2, z = -128;          MOV 4,%i0
+	                                     MOV 2,%i1
+					     MOV -128,%i2
+					     CALL EJEMPLO
+        int c= 0;                            MOV 0,%L0                          
+        int c = ejemplo(x,y,z);              ADD %L0,45,%O1
         return c + 45;
 }
 
