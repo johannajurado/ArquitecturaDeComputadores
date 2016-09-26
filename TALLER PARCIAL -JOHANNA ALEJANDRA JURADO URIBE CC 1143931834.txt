@@ -139,7 +139,7 @@ d.
 int main(){                LENGUAJE DE BAJO NIVEL
 int a = 6;                 MOV 6,%L0
 int b=4;                   MOV 4,%L1
-int c=2;                   MOV 2,%L2
+                           MOV 0,%L4
 for(int i=0; i<=3; i++)    FOR
                            CMP  %L4,3,%L5 
 {                          BG a SALTO1
@@ -148,7 +148,7 @@ c=(a+b)/8;                 ADD %L0,%L1,%L0
 	}                  BA a FOR
 	                   ADD %L4,1,%L4
 	                   SALTO1
-return c;                  mov  %l2,%O0   
+return c;                  MOV  %l2,%O0   
 }                        
                           
 
@@ -157,13 +157,13 @@ LENGUAJE DE MÁQUINA
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0000	        10	10000	0000100	00000	1	0000000000110	
 OX0004	        10	10001	0000100	00000	1	0000000000100	
-OX0008	        10	10010	0000100	00000	1	0000000000010	
+OX0008	        10	10010	0000100	00000	1	0000000000000	
 OX000C	        10	10101	100101	10100	1	0000000000011	
 	        OP	a	cond	OP2	disp22		
 OX0010	        00	1	1010	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2/SHCNT
 OX0014	        10	10000	000000	10000	0	00000000	10001
-OX0018	        10	10010	100100	10000	1	00000000	010000
+OX0018	        10	10010	100100	10000	1	00000000	01000
          	OP	a	cond	OP2	disp22		
 OX001C	        00	1	1000	010	0000000000000000000010	
                 OP	RD	OP3	RS1	i	Unusued/zero 	RS2
