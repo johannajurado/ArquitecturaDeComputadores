@@ -146,9 +146,10 @@ for(int i=0; i<=3; i++)    FOR
 c=(a+b)/8;                 ADD %L0,%L1,%L0
                            SRL %L0,8,%L2
 	}                  BA a FOR
+	                   ADD %L3,1,%L3
 	                   SALTO1
 return c;                  mov  %l2,%O0   
-}                          NOP
+}                        
                           
 
 LENGUAJE DE MÁQUINA
@@ -164,11 +165,12 @@ OX0010	        00	1	1010	010	0000000000000000000100
 OX0014	        10	10000	000000	10000	0	00000000	10001
 OX0018	        10	10010	100100	10000	1	00000000	010000
          	OP	a	cond	OP2	disp22		
-OX001C	        00	1	1000	010	0000000000000000000010		
+OX001C	        00	1	1000	010	0000000000000000000010	
+                OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0020          10      10011   000000  10011   1        0000000000001
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
-OX0020	        10	01000	000010	00000	0	00000000	10010
-	        OP	RD	OP2	Imm22			
-OX0024	        00	00000	100	0000000000000000000000			
+OX0024	        10	01000	000010	00000	0	00000000	10010
+		
 
 8. Convierta el siguiente código a lenguaje de máquina
 Asigancion de registros
