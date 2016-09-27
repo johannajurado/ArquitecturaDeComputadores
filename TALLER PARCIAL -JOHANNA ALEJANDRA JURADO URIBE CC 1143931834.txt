@@ -193,7 +193,7 @@ int main(){                                  MAIN
 }
 
  
- LENGUAJE MAQUINA
+LENGUAJE MAQUINA
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0000	        10	11010	000010	11000	0	00000000	11001
 	        OP	RD	OP3	RS1	i	Unusued/zero 	SHCNT
@@ -242,7 +242,7 @@ int num=2, num2=5, resultado=0;                MOV 0,%L0
 return resultado;
 }
 
-
+LENGUAJE MÁQUINA
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0000	        10	10001	000010	00000	1	0000000000000	
 OX0004	        10	10010	000010	00000	1	0000000000000	
@@ -305,6 +305,33 @@ r=(mul (r,num));                               MOV %L1,%O1
 return r;
 }
 }
+
+LENGUAJE MÁQUINA
+DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero	RS2
+OX0000	        10	10011	000010	00000	1	0000000000000	
+OX0004	        10	10010	000010	00000	1	0000000000000	
+OX0008	        10	10101	010100	10010	1	00000000	11001
+	        OP	a	cond	OP2	disp22		
+OX000C	        00	1	1010	010	0000000000000000000011		
+	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
+OX0010	        10	10011	000000	10011	0	00000000	11000
+	        OP	a	cond	OP2	disp22		
+OX0014	        00	1	1000	010	1	0000000000010	
+	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
+OX0018	        10	10010	000000	10010	1	0000000000001	
+OX001C	        10	00000	111000	01111	1	0000000001000	
+OX0020	        10	01000	000010	00000	0	00000000	10011
+OX0024	        10	11000	000010	00000	1	0000000000010	
+OX0028	        10	11001	000010	00000	1	0000000000101	
+OX002C	        10	10000	000010	00000	1	00000000000000	
+OX0030	        10	10001	000010	00000	0	00000000	10000
+OX0034	        10	10010	000010	00000	1	0000000000010	
+OX0038	        10	10100	010100	10010	0	00000000	11000
+	        OP	disp30					
+OX003C	        01	111111111111111111111111110001					
+	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
+OX0030	        10	10010	000010	10010	1	0000000000001	
+OX0034	        10	01001	000010	00000	0	00000000	10001
 
 11.Implemente una función pol en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que calcule un polinomio de grado n, en donde los coeficientes del polinomio se encuentran almacenados en un vector k de n+1 posiciones, de la siguientes forma:
 		pol(x,k,n)=i=0nkixi
