@@ -214,32 +214,30 @@ OX0028          10	11001	000000	10000	1	0000000101101
 
 9.Implemente una función mul en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que realice la multiplicación de dos enteros sin signo usando solo sumas.
 
-int mul (int amnt n2)
+int mul (int a,int b)
 {
 
-int t = 0;
+int c = 0;
 
-for  (int  i = 0;  i < n2;  i++)
+for  (int  i = 0;  i < b;  i++)
 {
-t + = n1;
+c=c+a;
 }
-return t;
+return c;
 }
 
 
 int main ()
 {
 
-int r=10, x=9, e=6;
-
-While (e > 0)
+int num=2, num2=5, resultado=0;
 
 {
-r = mul (r, x);
+resultado = mul (num,mum2);
 e - - ;
 }
 
-return r;
+return resultado;
 }
 
 10.Implemente la función pot en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que realice la potencia de dos números enteros sin signo realizando llamados a la función desarrollada en el punto 9.
