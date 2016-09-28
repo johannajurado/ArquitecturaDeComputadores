@@ -42,7 +42,7 @@ int b = -16800;     SETHI -17,%L1
                     OR %L1,608,%L1
 if((a+b)<=b*32){    ADD %L0,%L1,%L3
                     SLL %L1,32,%L4
-                    CMP %L3,%L4,%L4
+                    CMP %L3,%L4
                     BG a SALTO1
 c=a+(b*2);          SLL %L1,2,%L6
                     ADD %L0,%L6,%L2
@@ -64,7 +64,7 @@ OX0008	        10	10001	00010	10001	1	0001001100000
 OX000C	        10	10010	000100	10010	1	0000000100001	
 OX0010	        10	10011	000000	10000	0	00000000	10001
 OX0014	        10	10100	100101	10001	1	00000000	100000
-OX0018	        10	10101	010100	10011	0	00000000	10100
+OX0018	        10	10010	010100	00000	0	00000000	10100
 	        OP	a	cond	OP2	disp22		
 OX001C	        00	1	1010	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
@@ -83,7 +83,7 @@ int a = 8;              MOV 8,%L0
 int b = -10;            MOV -10,%L1
 int c = 3;              MOV 3,%L2
         
-if(a!=b){               CMP %L0,%L1,%L3
+if(a!=b){               CMP %L0,%L1
                         BE a SALTO1
 return c/8;             SRL %L2,8,%L2
                         MOV %L2,%O0
@@ -99,7 +99,7 @@ DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0000	        10	10000	000010	00000	1	0000000001000	
 OX0004	        10	10001	000010	10001	1	0000000010110	
 OX0008	        10	10010	000100	00000	1	0000000000011	
-OX000C	        10	10011	100101	10000	0	00000000	10001
+OX000C	        10	10000	100101	00000	0	00000000	10001
 	        OP	a	cond	OP2	disp22		
 OX0010	        00	1	0001	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2/SHCNT
@@ -137,11 +137,11 @@ int a = 6;                 MOV 6,%L0
 int b=4;                   MOV 4,%L1
                            MOV 0,%L4
 for(int i=0; i<=3; i++)    FOR
-                           CMP  %L4,3,%L5 
+                           CMP  %L4,3
 {                          BG a SALTO1
 c=(a+b)/8;                 ADD %L0,%L1,%L0
                            SRL %L0,8,%L2
-	}                  BA a FOR
+	}                  BA    FOR
 	                   ADD %L4,1,%L4
 	                   SALTO1
 return c;                  MOV  %l2,%O0   
@@ -154,14 +154,14 @@ DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0000	        10	10000	0000100	00000	1	0000000000110	
 OX0004	        10	10001	0000100	00000	1	0000000000100	
 OX0008	        10	10010	0000100	00000	1	0000000000000	
-OX000C	        10	10101	100101	10100	1	0000000000011	
+OX000C	        10	10100	100101	00000	1	0000000000011	
 	        OP	a	cond	OP2	disp22		
-OX0010	        00	1	1010	010	0000000000000000000100		
+OX0010	        00	1	1010	010	0000000000000000000101		
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2/SHCNT
 OX0014	        10	10000	000000	10000	0	00000000	10001
 OX0018	        10	10010	100100	10000	1	00000000	01000
          	OP	a	cond	OP2	disp22		
-OX001C	        00	1	1000	010	0000000000000000000010	
+OX001C	        00	1	1000	010	1111111111111111111011	
                 OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0020          10      10100   000000  10100   1        0000000000001
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
@@ -224,10 +224,10 @@ Asiganción de registros
 int mul (int a,int b)                          MOV 0,%L1                      
 {                                              MOV 0,%L2
                                                FOR   
-int c = 0;                                     CMP %L2,%I1,%L3
+int c = 0;                                     CMP %L2,%i1
                                                BG a SALTO
 for  (int  i = 0;  i < b;  i++)                ADD %L1,%i1.%L1
-{                                              BA a FOR 
+{                                              BA     FOR 
 c=c+a;                                         ADD %L2,1%l2
 }                                              SALTO
 return c;                                      JMPL %O7,8,%g0
@@ -248,14 +248,14 @@ LENGUAJE MÁQUINA
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0000	        10	10001	000010	00000	1	0000000000000	
 OX0004	        10	10010	000010	00000	1	0000000000000	
-OX0008	        10	10011	010100	10010	1	00000000	11001
+OX0008	        10	10010	010100	00000	1	00000000	11001
 OX000C	        10	00000	111000	01111	1	0000000001000	
 	        OP	a	cond	OP2	disp22		
-OX0010	        00	1	1010	010	0000000000000000000011		
+OX0010	        00	1	1010	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0014	        10	100101	000000	10001	0	00000000	11001
 	        OP	a	cond	OP2	disp22		
-OX0018	        00	1	1000	010	1	0000000000010	
+OX0018	        00	1	1000	010	111111111111111111111100	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX001C	        10	10010	000000	10010	1	0000000000001	
 OX0020	        10	00000	111000	01111	1	0000000001000	
@@ -282,7 +282,7 @@ Asiganción de registros
 int mul (int a,int b)                          MOV 0,%L3                      
 {                                              MOV 0,%L2
                                                FOR   
-int c = 0;                                     CMP %L2,%I1,%L5
+int c = 0;                                     CMP %L2,%i1
                                                BG a SALTO
 for  (int  i = 0;  i < b;  i++)                ADD %L3,%i1.%L3
 {                                              BA a FOR 
@@ -298,10 +298,11 @@ int main ()                                    MOV 2,%i0
 int num=2;				       MOV %L0,%L1
 int num2=5;				       MOV 2,%L2
 int resultado=0;			       FOR
-int r=num;				       CMP %L2,%I0,%L4
+int r=num;				       CMP %L2,%io
 					       BG a SALTO1
 for  (int  i = 2;  i <= b;  i++)  	       CALL MUL
 {                                              ADD %L2,1,%L2
+                                               SALTO1                                      
 r=(mul (r,num));                               MOV %L1,%O1
 }
 return r;
@@ -313,13 +314,13 @@ LENGUAJE MÁQUINA
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0000	        10	10011	000010	00000	1	0000000000000	
 OX0004	        10	10010	000010	00000	1	0000000000000	
-OX0008	        10	10101	010100	10010	1	00000000	11001
+OX0008	        10	10010	010100	00000	1	00000000	11001
 	        OP	a	cond	OP2	disp22		
-OX000C	        00	1	1010	010	0000000000000000000011		
+OX000C	        00	1	1010	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0010	        10	10011	000000	10011	0	00000000	11000
 	        OP	a	cond	OP2	disp22		
-OX0014	        00	1	1000	010	1	0000000000010	
+OX0014	        00	1	1000	010      1111111111111111111100	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0018	        10	10010	000000	10010	1	0000000000001	
 OX001C	        10	00000	111000	01111	1	0000000001000	
