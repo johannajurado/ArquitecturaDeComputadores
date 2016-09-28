@@ -161,7 +161,7 @@ OX0010	        00	1	1010	010	0000000000000000000101
 OX0014	        10	10000	000000	10000	0	00000000	10001
 OX0018	        10	10010	100100	10000	1	00000000	01000
          	OP	a	cond	OP2	disp22		
-OX001C	        00	1	1000	010	1111111111111111111011	
+OX001C	        00	0	1000	010	1111111111111111111011	
                 OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0020          10      10100   000000  10100   1        0000000000001
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
@@ -226,7 +226,7 @@ int mul (int a,int b)                          MOV 0,%L1
                                                FOR   
 int c = 0;                                     CMP %L2,%i1
                                                BG a SALTO
-for  (int  i = 0;  i < b;  i++)                ADD %L1,%i1.%L1
+for  (int  i = 0;  i < b;  i++)                ADD %L1,%i1,%L1
 {                                              BA     FOR 
 c=c+a;                                         ADD %L2,1%l2
 }                                              SALTO
@@ -255,7 +255,7 @@ OX0010	        00	1	1010	010	0000000000000000000100
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0014	        10	100101	000000	10001	0	00000000	11001
 	        OP	a	cond	OP2	disp22		
-OX0018	        00	1	1000	010	111111111111111111111100	
+OX0018	        00	0	1000	010	111111111111111111111100	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX001C	        10	10010	000000	10010	1	0000000000001	
 OX0020	        10	00000	111000	01111	1	0000000001000	
@@ -286,7 +286,7 @@ int c = 0;                                     CMP %L2,%i1
                                                BG a SALTO
 for  (int  i = 0;  i < b;  i++)                ADD %L3,%i1.%L3
 {                                              BA a FOR 
-c=c+a;                                         ADD %L2,1%l2
+c=c+a;                                         ADD %L2,1,%l2
 }                                              SALTO
 return c;                                      JMPL %O7,8,%g0
 }                                              MOV %L3,%O0  
@@ -301,6 +301,7 @@ int resultado=0;			       FOR
 int r=num;				       CMP %L2,%io
 					       BG a SALTO1
 for  (int  i = 2;  i <= b;  i++)  	       CALL MUL
+                                               BA    FOR 
 {                                              ADD %L2,1,%L2
                                                SALTO1                                      
 r=(mul (r,num));                               MOV %L1,%O1
@@ -320,7 +321,7 @@ OX000C	        00	1	1010	010	0000000000000000000100
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0010	        10	10011	000000	10011	0	00000000	11000
 	        OP	a	cond	OP2	disp22		
-OX0014	        00	1	1000	010      1111111111111111111100	
+OX0014	        00	0	1000	010      1111111111111111111100	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0018	        10	10010	000000	10010	1	0000000000001	
 OX001C	        10	00000	111000	01111	1	0000000001000	
@@ -330,12 +331,16 @@ OX0028	        10	11001	000010	00000	1	0000000000101
 OX002C	        10	10000	000010	00000	1	00000000000000	
 OX0030	        10	10001	000010	00000	0	00000000	10000
 OX0034	        10	10010	000010	00000	1	0000000000010	
-OX0038	        10	10100	010100	10010	0	00000000	11000
-	        OP	disp30					
-OX003C	        01	111111111111111111111111110001					
+OX0038	        10	10100	010100	OOOOOO	0	00000000	11000
+                OP	a	cond	OP2	 disp22		
+OX003C	        00	1	1010	010      0000000000000000000100	        
+		OP	disp30					
+OX0030	        01	111111111111111111111111110001
+                OP	a	cond	OP2	disp22		
+OX00034	        00	O	1000	010	111111111111111111111OO	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
-OX0030	        10	10010	000010	10010	1	0000000000001	
-OX0034	        10	01001	000010	00000	0	00000000	10001
+OX0038	        10	10010	000010	10010	1	0000000000001	
+OX004C	        10	01001	000010	00000	0	00000000	10001
 
 11.Implemente una función pol en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de máquina SPARCV8 que calcule un polinomio de grado n, en donde los coeficientes del polinomio se encuentran almacenados en un vector k de n+1 posiciones, de la siguientes forma:
 		pol(x,k,n)=i=0nkixi
